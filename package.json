@@ -5,6 +5,8 @@
   "license": "MIT",
   "scripts": {
     "server": "cd server && nodemon server.js",
-    "client": "cd client/src && nodemon app.js"
+    "client": "cd client && yarn vite dev",
+    "build-client": "cd client && yarn vite build",
+    "dev": "yarn server & yarn client"
   }
 }
