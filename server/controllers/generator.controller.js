@@ -5,7 +5,6 @@ async function handleGenerationRequest(req, res) {
   const input = req.body;
 
   const generatedImage = await generateImage(templateId, input);
-  console.log(`\nRecieved a generation request with body ${JSON.stringify(input)}.\n`);
   res.set("Content-Type", "image/png");
   res.send(generatedImage);
 }

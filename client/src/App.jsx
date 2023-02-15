@@ -9,7 +9,9 @@ function App() {
     homeTeam: "Hanworth-Villa",
     awayTeam: "Leatherhead",
   });
+
   const { data, loading, error } = useFetchImage("http://localhost:3000/generator/1", imageRequest);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setImageRequest((previousRequest) => {
@@ -42,7 +44,7 @@ function App() {
           />
           <button>GO!</button>
         </div>
-        <img src={data} alt="" />
+        <img className={loading ? "loading" : ""} src={data} alt="" />
       </div>
     </div>
   );
