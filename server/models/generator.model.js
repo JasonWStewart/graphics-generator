@@ -18,7 +18,7 @@ async function generateImage(templateId, input) {
   await page.evaluate(template.setFunction, input);
   const clipContainer = await page.$("#clip-container");
   const clip = await clipContainer.boundingBox();
-  const imageBuffer = await page.screenshot({ clip, type: "png" });
+  const imageBuffer = await page.screenshot({ clip, type: "png", encoding: "binary" });
   await browser.close();
   return imageBuffer;
 }
