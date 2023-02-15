@@ -1,32 +1,32 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
+async function getImage() {
+  return await fetch("http://localhost:3000/generator/1", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      homeScore: 1,
+      awayScore: 3,
+    }),
+  });
+}
+
 function App() {
-  const [image, setImage] = useState(0);
-
-  async function getImage() {
-    return await fetch("http://localhost:3000/generator/1", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        homeScore: 5,
-        awayScore: 3,
-      }),
-    });
-  }
-
+  const [imgSrc, setImgSrc] = useState("");
   useEffect(() => {
     getImage()
-      .then((res) => res.blob())
-      .then((blob) => setImage(URL.createObjectURL(blob)));
+      .then((result) => result.blob())
+      .then((blob) => setImgSrc(URL.createObjectURL(blob)));
   }, []);
 
   return (
     <div className="App">
       <div>
-        <img src={image} />
+        <h1>Hello World</h1>
+        <img src={imgSrc} alt="" />
       </div>
     </div>
   );
