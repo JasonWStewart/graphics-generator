@@ -1,7 +1,5 @@
 const path = require("path");
 const puppeteer = require("puppeteer");
-const imagemin = require("imagemin");
-const imageminPngquant = require("imagemin-pngquant");
 
 const availableTemplates = [
   {
@@ -11,16 +9,6 @@ const availableTemplates = [
     setFunction: require(path.join(__dirname, "..", "templates", "final-score", "final-score.js")),
   },
 ];
-
-async function optimiseImage(buffer) {
-  return await imagemin.buffer(buffer, {
-    plugins: [
-      imageminPngquant({
-        quality: [0.75, 0.8],
-      }),
-    ],
-  });
-}
 
 async function generateImage(templateId, input) {
   const template = availableTemplates.find((el) => el.templateId == templateId);
@@ -32,7 +20,7 @@ async function generateImage(templateId, input) {
   const clip = await clipContainer.boundingBox();
   const imageBuffer = await page.screenshot({ clip, type: "png" });
   await browser.close();
-  return await optimiseImage(imageBuffer);
+  return imageBuffer;
 }
 
 module.exports = {
