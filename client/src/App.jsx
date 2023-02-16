@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import useFetchImage from "./hooks/useFetchImage";
 
@@ -11,6 +11,12 @@ function App() {
   });
 
   const { data, loading, error } = useFetchImage("http://localhost:3000/generator/1", imageRequest);
+
+  useEffect(() => {
+    setImageRequest((previousRequest) => {
+      return { ...previousRequest };
+    });
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
