@@ -50,7 +50,7 @@ const UpcomingMatch = (props) => {
     awayColor: "#33aa55",
   });
 
-  const { data, loading, error } = useFetchImage("http://10.2.2.6:3000/generator/2", imageRequest);
+  const { data, loading, error } = useFetchImage("/generator/2", imageRequest);
 
   useEffect(() => {
     setImageRequest((previousRequest) => {

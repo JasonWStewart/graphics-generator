@@ -6,7 +6,7 @@ const app = express();
 
 const generatorRouter = require("./routes/generator.router");
 
-app.use(cors({ origin: "*" })); //DONT LEAVE IT LIKE THIS
+app.use(cors({ origin: "http://localhost:3000" })); //DONT LEAVE IT LIKE THIS
 
 app.use(morgan("short"));
 app.use(express.json());

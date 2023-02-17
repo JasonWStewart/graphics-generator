@@ -55,7 +55,7 @@ const FinalScore = (props) => {
     awayTeam: "Leatherhead",
   });
 
-  const { data, loading, error } = useFetchImage("http://10.2.2.6:3000/generator/1", imageRequest);
+  const { data, loading, error } = useFetchImage("/generator/1", imageRequest);
 
   useEffect(() => {
     setImageRequest((previousRequest) => {
