@@ -1,6 +1,19 @@
 import { useEffect, useState } from "react";
 import useFetchImage from "../../hooks/useFetchImage";
-import { Input, Flex, Button, VStack, FormControl, FormLabel, HStack, Select } from "@chakra-ui/react";
+import {
+  Input,
+  InputGroup,
+  InputLeftAddon,
+  InputRightAddon,
+  Flex,
+  Button,
+  VStack,
+  FormControl,
+  FormLabel,
+  HStack,
+  Select,
+  Text,
+} from "@chakra-ui/react";
 import { useFormik } from "formik";
 import WorkArea from "../UI/WorkArea";
 import Title from "../UI/Title";
@@ -42,13 +55,13 @@ const FinalScore = (props) => {
     awayTeam: "Leatherhead",
   });
 
-  const { data, loading, error } = useFetchImage("http://localhost:3000/generator/1", imageRequest);
+  const { data, loading, error } = useFetchImage("http://10.2.2.6:3000/generator/1", imageRequest);
 
-  // useEffect(() => {
-  //   setImageRequest((previousRequest) => {
-  //     return { ...previousRequest };
-  //   });
-  // }, []);
+  useEffect(() => {
+    setImageRequest((previousRequest) => {
+      return { ...previousRequest };
+    });
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -67,69 +80,80 @@ const FinalScore = (props) => {
   };
 
   return (
-    <Flex direction="column">
-      <Title fontSize="3xl">Final Score Graphic</Title>
-      <WorkArea>
-        <FormSection>
-          <form onSubmit={formik.handleSubmit}>
-            <VStack spacing="16px">
-              <FormControl>
-                <FormLabel htmlFor="homeScore">Home Score</FormLabel>
-                <Input
-                  type="number"
-                  name="homeScore"
-                  id="homeScore"
-                  min="0"
-                  step="1"
-                  value={formik.values.homeScore}
-                  onChange={formik.handleChange}
-                />
-              </FormControl>
-              <FormControl>
-                <FormLabel htmlFor="awayScore">Away Score</FormLabel>
-                <Input
-                  type="number"
-                  name="awayScore"
-                  id="awayScore"
-                  min="0"
-                  step="1"
-                  value={formik.values.awayScore}
-                  onChange={formik.handleChange}
-                />
-              </FormControl>
-              <FormControl>
-                <FormLabel htmlFor="homeTeam">Home Badge</FormLabel>{" "}
-                <Select id="homeTeam" name="homeTeam" value={formik.values.homeTeam} onChange={formik.handleChange}>
-                  {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </Select>
-              </FormControl>
-              <FormControl>
-                <FormLabel htmlFor="awayTeam">Away Badge</FormLabel>
-                <Select id="awayTeam" name="awayTeam" value={formik.values.awayTeam} onChange={formik.handleChange}>
-                  {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </Select>
-              </FormControl>
+    <WorkArea>
+      <VStack spacing="16px">
+        <Title fontSize="3xl">Final Score Graphic</Title>
+        <Flex direction={{ base: "column", lg: "row" }} gap="16px">
+          <FormSection>
+            <form onSubmit={formik.handleSubmit}>
+              <VStack spacing="16px">
+                <Flex direction="row" gap="16px">
+                  <FormControl>
+                    <InputGroup>
+                      <InputLeftAddon children="Home" />
+                      <Input
+                        type="number"
+                        name="homeScore"
+                        id="homeScore"
+                        min="0"
+                        step="1"
+                        value={formik.values.homeScore}
+                        onChange={formik.handleChange}
+                      />
+                    </InputGroup>
+                  </FormControl>
+                  <FormControl>
+                    <InputGroup>
+                      <Input
+                        textAlign="right"
+                        type="number"
+                        name="awayScore"
+                        id="awayScore"
+                        min="0"
+                        step="1"
+                        value={formik.values.awayScore}
+                        onChange={formik.handleChange}
+                      />
+                      <InputRightAddon children="Away" />
+                    </InputGroup>
+                  </FormControl>
+                </Flex>
+                <FormControl>
+                  <FormLabel htmlFor="homeTeam">Home Badge</FormLabel>
+                  <Select id="homeTeam" name="homeTeam" value={formik.values.homeTeam} onChange={formik.handleChange}>
+                    {options.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </Select>
+                </FormControl>
+                <FormControl>
+                  <FormLabel htmlFor="awayTeam">Away Badge</FormLabel>
+                  <Select id="awayTeam" name="awayTeam" value={formik.values.awayTeam} onChange={formik.handleChange}>
+                    {options.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </Select>
+                </FormControl>
 
-              <HStack>
-                <Button isLoading={loading} type="submit">
-                  Update
-                </Button>
-                <Button onClick={downloadLatest}>Download</Button>
-              </HStack>
-            </VStack>
-          </form>
-        </FormSection>
-        <ImageSection loading={loading} data={data}></ImageSection>
-      </WorkArea>
-    </Flex>
+                <Flex direction="row" gap="16px" w="100%">
+                  <Button isLoading={loading} type="submit" w="100%">
+                    Update
+                  </Button>
+                  <Button onClick={downloadLatest} w="100%">
+                    Download
+                  </Button>
+                </Flex>
+              </VStack>
+            </form>
+          </FormSection>
+          <ImageSection loading={loading} data={data}></ImageSection>
+        </Flex>
+      </VStack>
+    </WorkArea>
   );
 };
 

@@ -18,10 +18,11 @@ body {
   font-size: 125px;
   transform: skew(-3deg);
   text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.7);
-  background-color: rgb(190, 170, 170);
+  background: rgb(247, 245, 246);
+  background: linear-gradient(120deg, rgba(227, 225, 226, 1) 0%, rgba(201, 199, 200, 1) 100%);
   width: 110%;
   text-align: center;
-  box-shadow: 0px 5px 0px black;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.7);
   margin: 0;
   margin-top: 100px;
   margin-bottom: 75px;
@@ -81,4 +82,5 @@ body {
 
 .badge {
   width: 100%;
+  filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.7));
 }

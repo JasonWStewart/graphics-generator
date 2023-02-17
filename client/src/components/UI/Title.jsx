@@ -2,15 +2,8 @@ import { Center, Text } from "@chakra-ui/react";
 
 const Title = (props) => {
   return (
-    <Center
-      maxW="1280px"
-      p="16px"
-      border="1px"
-      borderColor="gray.200"
-      borderRadius="5px"
-      marginBottom="16px"
-      bg="gray.50">
-      <Text fontSize="4xl">{props.children}</Text>
+    <Center width="100%" p="16px" border="1px" borderColor="gray.200" borderRadius="4px" bg="white">
+      <Text fontSize={{ base: "3xl", lg: "4xl" }}>{props.children}</Text>
     </Center>
   );
 };
