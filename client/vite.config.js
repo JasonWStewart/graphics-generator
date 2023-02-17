@@ -9,4 +9,7 @@ export default defineConfig({
     outDir: path.join(__dirname, "..", "build"),
     emptyOutDir: true,
   },
+  server: {
+    host: true,
+  },
 });

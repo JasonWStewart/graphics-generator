@@ -3,7 +3,7 @@ import { Center } from "@chakra-ui/react";
 
 const MainDisplay = (props) => {
   return (
-    <Center bg="blue.50" w="100%" h="100%">
+    <Center bg="blue.50" h={{ base: "auto", lg: "95%" }}>
       {props.children}
     </Center>
   );
