@@ -19,6 +19,7 @@ import Title from "../components/UI/Title";
 import FormSection from "../components/forms/FormSection";
 import ImageSection from "../components/UI/ImageSection";
 import { saveAs } from "file-saver";
+import placeholder from "../assets/images/1000x800.png";
 
 const options = [
   { value: "Ashford-Town-(Middx)", label: "Ashford Town (Middlesex)" },
@@ -148,7 +149,7 @@ const FinalScore = (props) => {
             </VStack>
           </form>
         </FormSection>
-        <ImageSection loading={loading} data={data}></ImageSection>
+        <ImageSection loading={loading} data={data ? data : placeholder}></ImageSection>
       </Flex>
     </VStack>
   );
