@@ -14,6 +14,12 @@ const availableTemplates = [
     location: `file://${path.join(__dirname, "..", "templates", "upcoming-match", "upcoming-match.html")}`,
     setFunction: require(path.join(__dirname, "..", "templates", "upcoming-match", "upcoming-match.js")),
   },
+  {
+    templateId: 3,
+    name: "Profile Card",
+    location: `file://${path.join(__dirname, "..", "templates", "profile-card", "profile-card.html")}`,
+    setFunction: require(path.join(__dirname, "..", "templates", "profile-card", "profile-card.js")),
+  },
 ];
 
 async function generateImage(templateId, input) {

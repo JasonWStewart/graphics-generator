@@ -231,4 +231,14 @@ const NAV_ITEMS = [
       },
     ],
   },
+  {
+    label: "Promotional Graphics",
+    children: [
+      {
+        label: "Profile Card",
+        subLabel: "Sticker-style picture info card.",
+        href: "/profile-card",
+      },
+    ],
+  },
 ];
