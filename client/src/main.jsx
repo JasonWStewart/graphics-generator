@@ -7,6 +7,7 @@ import "./index.css";
 import ErrorPage from "./error-page";
 import FinalScore from "./routes/FinalScore";
 import UpcomingMatch from "./routes/UpcomingMatch";
+import ProfileCard from "./routes/ProfileCard";
 import Index from "./routes/Index";
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/upcoming-match",
         element: <UpcomingMatch />,
+      },
+      {
+        path: "/profile-card",
+        element: <ProfileCard />,
       },
     ],
   },

@@ -1,0 +1,19 @@
+version: "3"
+
+networks:
+  npm-proxy:
+    external: true
+
+services:
+  graphics-generator:
+    container_name: graphics-generator
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /usr/src/app/server
+    ports:
+      - "3456:3000"
+    entrypoint: ["node", "server.js"]
+    networks:
+      - npm-proxy
+    restart: unless-stopped
