@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "Oswald";
+  src: url("../../assets/fonts/Oswald.ttf") format("truetype");
+}
+
+body {
+  color: white;
+  font-family: "Oswald";
+}
+
+#clip-container {
+  width: 1000px;
+  height: 800px;
+  overflow: hidden;
+}
+
+.hero-text {
+  font-size: 125px;
+  transform: skew(-3deg);
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.7);
+  background: rgb(247, 245, 246);
+  background: linear-gradient(120deg, rgba(227, 225, 226, 1) 0%, rgba(201, 199, 200, 1) 100%);
+  width: 110%;
+  text-align: center;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.7);
+  margin: 0;
+  margin-top: 100px;
+  margin-bottom: 75px;
+}
+
+.top {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.score-container {
+  font-size: 100px;
+  margin-top: 25px;
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+}
+
+.badge-container {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.background {
+  position: absolute;
+  background-image: url("../../assets/images/texture.jpg");
+  background-blend-mode: multiply;
+  background-color: rgb(170, 0, 0);
+  width: inherit;
+  height: inherit;
+  z-index: -10;
+}
+
+.foreground {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.image-container {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.badge {
+  width: 100%;
+  filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.7));
+}
